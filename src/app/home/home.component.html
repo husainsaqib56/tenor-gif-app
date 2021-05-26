@@ -1,0 +1,13 @@
+<div class="container searchPage">
+    <h2>{{heading}}</h2>
+    <hr>
+    <div class="row" *ngIf="showGIF">
+        <div class="col-md-4" *ngFor="let gif of gifData">
+            <div *ngFor="let media of gif.media">
+                <div class="card">
+                    <img [src]="media?.tinygif.url" [alt]="gif.h1_title" [title]="gif.h1_title">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

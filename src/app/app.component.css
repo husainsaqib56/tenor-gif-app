@@ -1,0 +1,95 @@
+.topNavbar {
+    height: 75px;
+    padding: 12px;
+    background-image: linear-gradient(90deg, #4cafff, #2e93e6);
+    z-index: 200;
+    vertical-align: sub;
+}
+
+.navbar-brand {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.navBarContent {
+    display: flex;
+}
+
+.gifList {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -20px -10px!important;
+}
+
+.gifList .column {
+    position: relative;
+    top: 0;
+    margin: 0;
+    flex-grow: 1;
+    flex-basis: 0;
+    height: 100%;
+}
+
+.page {
+    padding-top: 50px;
+    margin-bottom: 30px;
+}
+
+.searchBar {
+    border-radius: 14px;
+    flex: auto;
+}
+
+.input-container {
+    display: flex;
+    width: 100%;
+}
+
+
+/****************************************/
+
+.suggest {
+    width: 1014px;
+    border: 1px solid #efefef;
+    background: white;
+    top: 56px;
+    overflow: auto;
+}
+
+
+/* reset our lists to remove bullet points and padding */
+
+.mainmenu,
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* make ALL links (main and submenu) have padding and background color */
+
+.mainmenu a {
+    display: block;
+    border-bottom: 1px solid #e5e5e5;
+    text-decoration: none;
+    padding: 10px;
+    color: #000;
+}
+
+.searchField {
+    flex: auto;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.card-media {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 10px;
+}

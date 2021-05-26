@@ -1,0 +1,50 @@
+<div class="topNavbar">
+
+    <div class="container">
+        <span class="navBarContent">
+      <a class="navbar-brand" href="../">
+        <img src="../assets/img/tenor-logo-white.svg" alt="Tenor" height="22" width="80">
+      </a>
+      <div class="searchBar">
+        <div class="input-container">
+          <input type="text" placeholder="Search for GIFs" (ngModelChange)="onTextChange($event)" [(ngModel)]="search"
+            (keyup)="getAutoSuggestion($event)" class="searchField">
+        </div>
+        <div class="suggest" id="suggestedData" *ngIf="showSuggestion">
+          <ul class="mainmenu" *ngFor="let item of sugResult">
+            <li>
+              <a (click)="searchValue(item)" style="cursor: pointer;" href="javascript:void(0)">{{item}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </span>
+    </div>
+
+    <!----------------Trending Gif Starts----------------------------->
+
+    <div class="view" *ngIf="viewTrendGif">
+        <div class="trendingPage">
+            <div class="container page">
+                <h2>Trending GIFs</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let item of trendGif">
+                        <div class="card-media" *ngFor="let media of item.media">
+                            <img [src]="media?.tinygif.url" [width]="262.5" [height]="media?.tinygif.dims[1]" [alt]="item.h1_title" [title]="item.h1_title">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------Trending Gif Ends-------------------------------->
+
+
+    <!----------------Gif Searched Result Starts------------------------>
+    <div class="container" *ngIf="searchedGif">
+        <app-home [mydata]="searchVal"></app-home>
+    </div>
+    <!----------------Gif Searched Result Ends-------------------------->
+</div>
