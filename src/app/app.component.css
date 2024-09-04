@@ -51,6 +51,8 @@
 /****************************************/
 
 .suggest {
+    position: absolute;
+    z-index: 999;
     width: 1014px;
     border: 1px solid #efefef;
     background: white;
@@ -90,6 +92,10 @@
 .card-media {
     border: 1px solid #d9d9d9;
     border-radius: 5px;
-    display: flex;
+    overflow: hidden;
     margin-bottom: 10px;
+}
+
+.p-rel{
+    position: relative;
 }

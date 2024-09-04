@@ -16,11 +16,11 @@ export class TrendingService {
   }
 
   getAutoSuggestion(keyword: string | number): Observable<any> {
-    return this.http.get(`${this.baseUrl}autocomplete?q=${keyword}&key=LIVDSRZULELA`);
+    return this.http.get(`${this.baseUrl}autocomplete?q=${keyword}&key=LIVDSRZULELA&limit=10`);
   }
 
   getSearchGif(item: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}search?platform=web&key=JJHDC7UK73EH&locale=en&anonid=MTkyMzgzMDY2NA&tag=${item}&limit=50`);
+    return this.http.get(`${this.baseUrl}search?platform=web&key=JJHDC7UK73EH&locale=en&anonid=MTkyMzgzMDY2NA&tag=${item}&limit=20`);
   }
 }
 

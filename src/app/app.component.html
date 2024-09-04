@@ -31,7 +31,7 @@
         <div class="row">
           <div class="col-md-3" *ngFor="let item of trendGif">
             <div class="card-media" *ngFor="let media of item.media">
-              <img [src]="media?.tinygif.url" [width]="262.5" [height]="media?.tinygif.dims[1]" [alt]="item.h1_title"
+              <img [src]="media?.tinygif.url" [width]="262.5" [height]="262.5" [alt]="item.h1_title"
                 [title]="item.h1_title">
             </div>
           </div>
@@ -44,7 +44,7 @@
 
 
   <!----------------Gif Searched Result Starts------------------------>
-  <div class="container" *ngIf="searchedGif">
+  <div class="container p-rel" *ngIf="searchedGif">
     <app-home [mydata]="searchVal"></app-home>
   </div>
   <!----------------Gif Searched Result Ends-------------------------->

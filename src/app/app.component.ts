@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TrendingService } from './services/trending.service';
 import { IGifResultModel, IGifModel } from './app.model';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   trendGif: IGifResultModel[];
@@ -18,7 +19,13 @@ export class AppComponent implements OnInit, OnDestroy {
   showSuggestion = false;
   unsubscribe: Subscription;
 
-  constructor(private apiService: TrendingService) { }
+  constructor(
+    private apiService: TrendingService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle(`Tenor Gif`);
+  }
+
 
   ngOnInit(): void {
     this.apiService.getTrending().subscribe((res: IGifModel) => {
@@ -29,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
   // get length of word typed in searchInputField
   getKeyCode = (str: string) => {
     return str.charCodeAt(str.length);
-  }
+  };
 
   // get Suggestion on typed Input
   getAutoSuggestion(event: any): void {
@@ -41,13 +48,15 @@ export class AppComponent implements OnInit, OnDestroy {
       this.searchVal = this.search;
     }
 
-    this.unsubscribe = this.apiService.getAutoSuggestion(this.search)
+    this.unsubscribe = this.apiService
+      .getAutoSuggestion(this.search)
       .subscribe((response: IGifModel) => {
         this.sugResult = response.results;
         if (this.sugResult.length > 0) {
           this.showSuggestion = true;
-        }
-        else if (this.sugResult.length === 0 && this.search === '') {
+        } else if (this.sugResult.length === 0 && this.search === '') {
+          this.showSuggestion = false;
+        } else {
           this.showSuggestion = false;
         }
       });
@@ -56,8 +65,10 @@ export class AppComponent implements OnInit, OnDestroy {
   // checks at every interval value of searchInputField
   onTextChange(value: string): void {
     this.search = value;
-    setInterval(() => {
-      this.search !== '' ? this.showSuggestion = true : this.showSuggestion = false;
+    setTimeout(() => {
+      this.search !== ''
+        ? (this.showSuggestion = true)
+        : (this.showSuggestion = false);
     }, 1000);
   }
 
